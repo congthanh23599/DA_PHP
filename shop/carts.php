@@ -11,7 +11,8 @@
 	if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 		$quantity = $_POST['quantity'];
 		$cartID = $_POST['cartID'];
-		$update_SL_Cart = $ct->update_SL_Cart($quantity, $cartID) ;
+		$UserID =  $_POST['UserID'];
+		$update_SL_Cart = $ct->update_SL_Cart($quantity, $cartID, $UserID) ;
 		if($quantity <=0)
 		{
 			$delcart = $ct->del_cart($cartID) ;
@@ -64,6 +65,7 @@
 									<form action="" method="post">
 										<input type="number" min="0" name="quantity" value="<?php echo $result['quantity']; ?>"/>
 										<input type="hidden" name="cartID" value="<?php echo $result['cartID']; ?>"/>
+										<input type="hidden" name="UserID" value="<?php $id = Session::get('user_ID');echo $id; ?>"/>
 										<input type="submit" name="submit" value="Update"/>
 									</form>
 								</td>

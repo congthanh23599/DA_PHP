@@ -1,14 +1,28 @@
 <?php 
-include'./inc/header.php';
-// include'./inc/slider.php';
+    require_once './lb/session.php';
+	require_once('C:/xampp/htdocs/DA_PHP/shop/lb/database.php');
+	// './lb/database.php';
+    require_once './helper/format.php';
+    Session::init();
 ?>
-<?php 
-	$login_check = Session::get('user_login');
-	if ($login_check) {
-		header('Location:order.php');
-	} 
-				
+
+<?php
+    // lấy tất cả file trong folder classes
+	spl_autoload_register(function($className) {
+		require_once  "classes/" .$className . '.php';
+	});
+	
+	
+	$Db = new Database();
+	$fm = new Format();
+	$ct = new cart();
+	$us = new user();
+	$cat = new category();
+    $cs = new customer();
+	$product = new product();
 ?>
+
+
 <?php
        
 	   if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {

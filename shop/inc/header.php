@@ -93,7 +93,7 @@
 			
 				if (isset($_GET['userID'])) 
 				{	
-					$delcart = $ct->del_all_cart();
+					//$delcart = $ct->del_all_cart();
 					// unset($_SESSION['user_ID']);
 					// header("Location:login.php");
 					Session::destroy();
@@ -104,7 +104,7 @@
 			<?php 
 				$login_check = Session::get('user_login');
 				if ($login_check == false) 
-				{
+				{ 	
 					echo" <div style='margin-left: 5px;' class='btn btn-outline-secondary'><a href='login.php'>Đăng nhập</a></div>";
 					echo"<div class='btn btn-outline-primary'><a href='Register.php'>Đăng ký</a></div>";
 				} 

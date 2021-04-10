@@ -11,9 +11,11 @@
 		$id = $_GET['proID'];
 	}
 	if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
+	
 		$quantity = $_POST['quantity'];
-		$addToCart = $ct->Add_To_Cart($quantity, $id) ;
-		
+		$UserID = Session::get('user_ID');
+		$addToCart = $ct->Add_To_Cart($quantity, $id, $UserID) ;
+		//$update_SL_Cart = $ct->update_SL_Cart($quantity, $cartID, $UserID) ;
 	}
 ?>
  <div class="main">
@@ -39,12 +41,27 @@
 						<p>Gía: <span><?php echo $result_details['price']." "."VND" ;?></span></p>
 						<p>Loại sản phẩm: <span><?php echo $result_details['catName'] ?></span></p>
 						<p>Thương hiệu:<span><?php echo $result_details['brandName'] ?></span></p>
+					
 						<br>
 					</div>
 					<div class="add-cart">
 						<form action="" method="post">
-							<input type="number" class="buyfield" name="quantity" value="1" min="1"/>
-							<input type="submit" class="buysubmit" name="submit" value="Buy Now"/>
+						<?php 
+							$login_check = Session::get('user_login');
+							if ($login_check) 
+							{
+								echo'<input type="number" class="buyfield" name="quantity" value="1" min="1"/>';
+								echo '<input type="submit" class="buysubmit" name="submit" value="Mua"/>';
+							}
+							else
+							{
+								echo'<input type="number" class="buyfield" name="quantity" value="1" min="1"/>';
+								echo '<a href="login.php" type="button" class="btn btn-danger">Mua</a>';
+								
+							} 
+										
+						?>
+							
 						</form>	
 						<?php 
 								if (isset($addToCart)) {

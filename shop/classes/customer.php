@@ -73,7 +73,7 @@
                     Session::set('user_ID', $value['ID']);
                     Session::set('user_Name',  $value['Name']);
                 
-                    header('Location:order.php');
+                    header('Location:index.php');
                     //session_destroy();
                 } 
                 else 
