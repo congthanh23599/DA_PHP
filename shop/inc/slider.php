@@ -52,10 +52,10 @@
         <section class="slider">
             <div class="flexslider">
                 <ul class="slides">
-                    <li><img src="images/1.jpg" alt="" /></li>
-                    <li><img src="images/2.jpg" alt="" /></li>
-                    <li><img src="images/3.jpg" alt="" /></li>
-                    <li><img src="images/4.jpg" alt="" /></li>
+                    <li><img src="images/banner-web-nhaxinh-online.jpg" alt="" /></li>
+                    <li><img src="images/BST-May-Phongan.jpg" alt="" /></li>
+                    <!-- <li><img src="images/ctv-banner.jpg" alt="" /></li> -->
+                    <li><img src="images/banner-gom-to-am-gop-tra-sau-4.png" alt="" /></li>
                 </ul>
             </div>
         </section>

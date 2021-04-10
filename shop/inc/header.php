@@ -91,13 +91,13 @@
 
 			<?php 
 			
-				if (isset($_GET['user_login'])) 
+				if (isset($_GET['userID'])) 
 				{	
-					//$delcart = $ct->del_all_cart();
+					$delcart = $ct->del_all_cart();
 					// unset($_SESSION['user_ID']);
 					// header("Location:login.php");
-					//Session::destroy();
-					session_destroy();
+					Session::destroy();
+					
 				}
 				
 			?>
@@ -122,10 +122,10 @@
  </div>
 <div class="menu">
 	<ul id="dc_mega-menu-orange" class="dc_mm-orange">
-	  <li><a href="index.php">Home</a></li>
-	  <li><a href="products.php">Products</a> </li>
-	  <li><a href="topbrands.php">Top Brands</a></li>
-	  <li><a href="carts.php">Cart</a></li>
+	  <li><a href="index.php">Trang Chủ</a></li>
+	  <li><a href="products.php">Sản Phẩm</a> </li>
+	  <!-- <li><a href="topbrands.php">Top Brands</a></li> -->
+	  <li><a href="carts.php">Giỏ Hàng</a></li>
 	  <li><a href="contact.php">Contact</a> </li>
 
 	  <div class="clear"></div>

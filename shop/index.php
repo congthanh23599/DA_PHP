@@ -21,12 +21,12 @@ include'./inc/slider.php';
                        
                    
             ?>
-            <div class="grid_1_of_4 images_1_of_4">
+            <div class="grid_1_of_4 images_1_of_4 "style="height: 500px;">
                 <a href="details.php"><img src="admin/uploads/<?php echo $result['image'] ;?>" alt="" /></a>
                 <h2><?php echo $result['productName'] ;?> </h2>
                 <p><?php echo $fm->textShorten($result['product_desc'],50)  ;?></p>
                 <p><span class="price"><?php echo $result['price']." "."VND" ;?></span></p>
-                <div class="button"><span><a href="details.php?proID=<?php echo $result['productID']; ?>" class="details">Details</a></span></div>
+                <div class="button"  ><span><a href="details.php?proID=<?php echo $result['productID']; ?>" class="details"  >Details</a></span></div>
             </div>
             <?php 
              }
@@ -49,7 +49,7 @@ include'./inc/slider.php';
                        
                    
             ?>
-            <div class="grid_1_of_4 images_1_of_4">
+            <div class="grid_1_of_4 images_1_of_4" style="height: 500px;">
                 <a href="details.php"><img src="admin/uploads/<?php echo $result_moi['image'] ;?>" alt="" /></a>
                 <h2><?php echo $result_moi['productName'] ;?> </h2>
                 <p><?php echo $fm->textShorten($result_moi['product_desc'],50)  ;?></p>

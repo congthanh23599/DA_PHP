@@ -77,6 +77,12 @@
             $result = $this->db->select($query);
             return $result;
         }
+        public function show_ALL_product()
+        {   
+            $query = "SELECT * FROM tbl_product ";
+            $result = $this->db->select($query);
+            return $result;
+        }
         public function getproductID($id)
         {
             $query = "SELECT * FROM tbl_product WHERE productID ='$id' "; 
@@ -193,7 +199,7 @@
         //font-end
         public function getprodut_NoiBat()
         {
-            $query = "SELECT * FROM tbl_product WHERE type ='1' "; 
+            $query = "SELECT * FROM tbl_product WHERE type ='1' LIMIT 4"; 
             $result = $this->db->select($query);
             return $result;
         }

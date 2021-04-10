@@ -74,7 +74,7 @@
                     Session::set('user_Name',  $value['Name']);
                 
                     header('Location:order.php');
-                    session_destroy();
+                    //session_destroy();
                 } 
                 else 
                 {

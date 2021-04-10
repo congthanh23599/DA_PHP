@@ -46,7 +46,7 @@ include'./inc/header.php';
 				<div class="grid_1_of_4 images_1_of_4">
 					 <a href="details-3.php"><img src="admin/uploads/<?php echo $result['image'] ;?>" alt="" /></a>
 					 <h2><?php echo $result['productName'] ;?> </h2>
-					 <p><?php echo $result['product_desc'] ;?></p>
+					 <p><?php echo $fm->textShorten( $result['product_desc'], 50) ;?></p>
 					 <p><span class="price"><?php echo $result['price'] ;?></span></p>
 				     <div class="button"><span><a href="details.php?proID=<?php echo $result['productID']; ?>" class="details">Details</a></span></div>
 				</div>
