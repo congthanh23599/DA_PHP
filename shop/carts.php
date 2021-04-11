@@ -60,7 +60,7 @@
 							<tr>
 								<td><?php echo $result['productName'];?></td>
 								<td><img src="admin/uploads/<?php echo $result['image'] ;?>" alt="" /></td>
-								<td> <?php echo $result['price'];?></td>
+								<td> <?php echo $result['price']." "."VND";?></td>
 								<td>
 									<form action="" method="post">
 										<input type="number" min="0" name="quantity" value="<?php echo $result['quantity']; ?>"/>
@@ -94,7 +94,7 @@
 								<th>Tổng giá : </th>
 								<td><?php 
 									
-									echo $tonggia;
+									echo $tonggia." "."VND";
 									// Session::set('sum', $tonggia);
 									Session::set('SL', $SL);
 								 ?></td>

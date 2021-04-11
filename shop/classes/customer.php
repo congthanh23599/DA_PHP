@@ -86,5 +86,78 @@
 
             }
         }
+        public function show_ALL_customer()
+        {   
+            $query = "SELECT * FROM tbl_user ";
+            $result = $this->db->select($query);
+            return $result;
+        }
+        public function del_user($id)
+        {
+          $query = "DELETE FROM tbl_user WHERE ID ='$id' "; 
+          $result = $this->db->delete($query);
+          if ($result) 
+          {
+              $alert = "<span class='success'> Xóa thanh cong</span>";
+              return $alert;
+          } 
+          else 
+          {
+            $alert = "<span class='error'> Xóa khong thanh cong</span>";
+            return $alert;
+          }
+        }
+        public function getUserID($id)
+        {
+            $query = "SELECT * FROM tbl_user WHERE ID ='$id' "; 
+            $result = $this->db->select($query);
+            return $result;
+        }
+        public function update_user($data,  $id)
+        { 
+            //dung bien ket noi vs co so du lieu
+            //$ID = mysqli_real_escape_string($this->db->link, $data['ID']);
+            $Name = mysqli_real_escape_string($this->db->link, $data['Name']);
+            $Address = mysqli_real_escape_string($this->db->link, $data['Address']);
+            $Phone = mysqli_real_escape_string($this->db->link, $data['Phone']);
+            $Gender = mysqli_real_escape_string($this->db->link, $data['Gender']);
+            $Email = mysqli_real_escape_string($this->db->link, $data['Email']);
+            $Password = mysqli_real_escape_string($this->db->link, $data['Password']);
+      
+            if ($Name == "" || $Address == "" || $Phone == "" || $Gender == "" || $Email == "" || $Password == ""  ) 
+            {
+              $alert = "<span class='error'> khong duoc bo trong</span>";
+              return $alert;
+            }
+            else 
+            {
+                  $query = "UPDATE tbl_user SET
+                  Name = '$Name',
+                  Address = '$Address',
+                  Phone = '$Phone',
+                  Gender = '$Gender',
+                  Email = '$Email',
+                  Password = '$Password'
+                  WHERE ID = '$id' ";
+                  $result = $this->db->update($query);
+                  if ($result) 
+                  {
+                    $alert = "<span class='success'> Sửa sản phẩm  thanh cong</span>";
+                    return $alert;
+                  } 
+                  else 
+                  {
+                    $alert = "<span class='error'> Sửa sản phẩm  khong thanh cong</span>";
+                    return $alert;
+                  }
+            }
+        }
+        // front-end
+        public function getThongTinUsser($id)
+        {
+            $query = "SELECT * FROM tbl_user WHERE ID = '$id'"; 
+            $result = $this->db->select($query);
+            return $result;
+        }
     }
 ?>

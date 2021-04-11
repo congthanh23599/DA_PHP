@@ -5,7 +5,7 @@
     </div>
     <div id="site_info">
         <p>
-         &copy; Copyright <a href="http://trainingwithliveproject.com">Training with live project</a>. All Rights Reserved.
+         &copy; DA_PHP <a href="">ShopXinh</a>. Nhóm TCD_IT.
         </p>
     </div>
 </body>

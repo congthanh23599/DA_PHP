@@ -29,7 +29,7 @@
 ?>
 <!DOCTYPE HTML>
 <head>
-<title>Store Website</title>
+<title>Shop Xinh</title>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <link href="css/menu.css" rel="stylesheet" type="text/css" media="all"/>
@@ -126,7 +126,21 @@
 	  <li><a href="products.php">Sản Phẩm</a> </li>
 	  <!-- <li><a href="topbrands.php">Top Brands</a></li> -->
 	  <li><a href="carts.php">Giỏ Hàng</a></li>
-	  <li><a href="contact.php">Contact</a> </li>
+	  <?php 
+			
+			$login_check = Session::get('user_login');
+			if ($login_check == false) 
+			{ 	echo "";
+				
+			
+			} 
+			else 
+			{
+				echo '<li><a href="ThongTinUser.php?IDuser='.Session::get("user_ID").'">Tài khoản</a> </li>';
+			}
+				
+		?>
+	  <!-- <li><a href="ThongTinUser.php">Tài khoản</a> </li> -->
 
 	  <div class="clear"></div>
 	</ul>
