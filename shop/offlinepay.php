@@ -4,30 +4,14 @@
 	
 ?>
 <?php
-
 	if(isset($_GET['orderid']) && $_GET['orderid']=='order'){
-       //$customer_id = Session::get('customer_id');
+       //$user_id = Session::get('user_id');
 	   $userID = Session::get('user_ID');
        $insertOrder = $ct->insertOrder($userID);
        $delcart = $ct->del_all_cart();
     }
 ?>
-<style type="text/css">
-	.box_left {
-    width: 47%;
-    border: 1px solid #666;
-    float: left;
-    padding: 4px;	
-	height: auto;
 
-	}
- 	.box_right {
-    width: 47%;
-    border: 1px solid #666;
-    float: right;
-    padding: 4px;
-	height: auto;
-	}
 </style>
 <form action="" method="POST">
  <div class="main">
@@ -38,7 +22,7 @@
 	    	</div>
 	    		
 	    	<div class="clear"></div>
-    		<div class="box_left">
+    		<div>
     			<div class="cartpage">
 			    	
 			    	<?php
@@ -91,12 +75,12 @@
 						<table style="float:right;text-align:left;margin:5px" width="50%">
 							<tr>
 								<th>Tổng tiền : </th>
-								
 								<td><?php 
+								
+										echo $tonggia." "."VND";
+										// Session::set('sum', $tonggia);
+										Session::set('SL', $SL);
 									
-									echo $tonggia." "."VND";
-									// Session::set('sum', $tonggia);
-									Session::set('SL', $SL);
 								 ?>
 								 </td>
 							</tr>
@@ -104,13 +88,13 @@
 					   </table>
 					</div>
     		</div>
-    		<div class="box_right">
+    		<div>
     			<table class="table">
 				<?php
 				$id = Session::get('user_ID');
-				$get_customers = $cs->show_customers($id);
-				if($get_customers){
-					while($result = $get_customers->fetch_assoc()){
+				$get_users = $cs->show_users($id);
+				if($get_users){
+					while($result = $get_users->fetch_assoc()){
 
 				?>
 				<tr>
@@ -150,8 +134,8 @@
 				</tr>
 				
 				<tr>
-					<td colspan="3"><a class="mx-auto" href="editprofile.php">Sửa thông tin</a></td>
 					
+					<td><a class="btn btn-outline-primary" href="editprofile.php" role="button">Sửa thông tin</a></td>
 				</tr>
 				
 				<?php

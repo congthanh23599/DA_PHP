@@ -33,7 +33,7 @@ include'./inc/slider.php';
                 <h2><?php echo $result['productName'] ;?> </h2>
                 <p><?php echo $fm->textShorten($result['product_desc'],50)  ;?></p>
                 <p><span class="price"><?php echo $result['price']." "."VND" ;?></span></p>
-                <div class="button"  ><span><a href="details.php?proID=<?php echo $result['productID']; ?>" class="details"  >Details</a></span></div>
+                <div class="button"  ><span><a href="details.php?proID=<?php echo $result['productID']; ?>" class="details"  >Chi tiết</a></span></div>
             </div>
             <?php 
              }
@@ -61,7 +61,7 @@ include'./inc/slider.php';
                 <h2><?php echo $result_moi['productName'] ;?> </h2>
                 <p><?php echo $fm->textShorten($result_moi['product_desc'],50)  ;?></p>
                 <p><span class="price"><?php echo $result_moi['price']." "."VND" ;?></span></p>
-                <div class="button"><span><a href="details.php?proID=<?php echo $result_moi['productID']; ?>" class="details">Details</a></span></div>
+                <div class="button"><span><a href="details.php?proID=<?php echo $result_moi['productID']; ?>" class="details">Chi tiết</a></span></div>
             </div>
             <?php 
              }

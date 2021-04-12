@@ -18,7 +18,7 @@
 	$ct = new cart();
 	$us = new user();
 	$cat = new category();
-    $cs = new customer();
+    $cs = new user();
 	$product = new product();
 ?>
 
@@ -27,7 +27,7 @@
        
 	   if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
 		   
-		   $loginCustomer = $cs->login_Customer($_POST) ;
+		   $loginuser = $cs->login_user($_POST) ;
 		   
 	   }
 ?>
@@ -52,9 +52,9 @@
 	<a href="Register.php" class="float-right btn btn-outline-primary mt-1">Đăng ký</a>
 	<h4 class="card-title mt-2">Đăng nhập</h4>
 	<?php 
-        if (isset($loginCustomer)) 
+        if (isset($loginuser)) 
         {
-			echo $loginCustomer;
+			echo $loginuser;
 		}
     ?>
 </header>

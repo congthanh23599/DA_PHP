@@ -164,7 +164,7 @@
                      VALUES('$productid', '$userName', '$userID', '$quantity', '$price', '$image','$Address')";
 					$insert_order = $this->db->insert($query_order);
 				}
-                header("Location:index.php");
+                header("Location:success.php");
 			}
 
 

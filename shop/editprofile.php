@@ -14,7 +14,7 @@
  	$id = Session::get('user_ID');
     if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['save'])) {
        
-        $UpdateCustomers = $cs->update_customers($_POST, $id);
+        $Updateusers = $cs->update_users($_POST, $id);
         
     }
 ?>
@@ -32,17 +32,17 @@
 				<tr>
 					
 						<?php
-						if(isset($UpdateCustomers)){
-							echo '<td colspan="3">'.$UpdateCustomers.'</td>';
+						if(isset($Updateusers)){
+							echo '<td colspan="3">'.$Updateusers.'</td>';
 						}
 						?>
 					
 				</tr>
 				<?php
 				$id = Session::get('user_ID');
-				$get_customers = $cs->show_customers($id);
-				if($get_customers){
-					while($result = $get_customers->fetch_assoc()){
+				$get_users = $cs->show_users($id);
+				if($get_users){
+					while($result = $get_users->fetch_assoc()){
 
 				?>
 				<tr>
@@ -95,7 +95,8 @@
 					
 				</tr>
 				<tr>
-					<td colspan="3"><input class="btn btn-outline-primary" type="submit" name="save" value="Lưu"></td>
+					<td><a class="btn btn-outline-primary" href="ThongTinUser.php" role="button">trở về trang thông tin</a></td>
+					<td ><input class="btn btn-outline-primary" type="submit" name="save" value="Lưu"></td>
 				</tr>
 				<?php
 					}

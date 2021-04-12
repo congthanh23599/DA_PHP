@@ -36,9 +36,9 @@
 			<table class="table">
 				<?php
 				$id = Session::get('user_ID');
-				$get_customers = $cs->show_customers($id);
-				if($get_customers){
-					while($result = $get_customers->fetch_assoc()){
+				$get_user = $cs->show_users($id);
+				if($get_user){
+					while($result = $get_user->fetch_assoc()){
 
 				?>
 				<tr>
@@ -77,7 +77,7 @@
 					<td><?php echo $result['Email'] ?></td>
 				</tr>
 				<tr>
-					<td colspan="3"><a href="editprofile.php">Sửa thông tin</a></td>
+				<td><a class="btn btn-outline-primary" href="editprofile.php" role="button">Sửa thông tin</a></td>
 					
 				</tr>
 				

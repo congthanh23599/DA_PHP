@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th4 11, 2021 lúc 05:19 AM
+-- Thời gian đã tạo: Th4 12, 2021 lúc 08:07 PM
 -- Phiên bản máy phục vụ: 10.4.18-MariaDB
 -- Phiên bản PHP: 8.0.3
 
@@ -73,13 +73,19 @@ INSERT INTO `tbl_brand` (`brandID`, `brandName`) VALUES
 CREATE TABLE `tbl_cart` (
   `cartID` int(11) NOT NULL,
   `productID` int(11) NOT NULL,
-  `sID` varchar(255) NOT NULL,
   `productName` varchar(255) NOT NULL,
   `price` int(200) NOT NULL,
   `quantity` int(11) NOT NULL,
   `image` varchar(200) NOT NULL,
   `UserID` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Đang đổ dữ liệu cho bảng `tbl_cart`
+--
+
+INSERT INTO `tbl_cart` (`cartID`, `productID`, `productName`, `price`, `quantity`, `image`, `UserID`) VALUES
+(69, 25, 'Bàn đầu giường Maxine', 15900000, 1, '5fb32272bd.jpg', 5);
 
 -- --------------------------------------------------------
 
@@ -107,6 +113,36 @@ INSERT INTO `tbl_category` (`catID`, `catName`) VALUES
 (27, 'Bộ sưu tập'),
 (28, 'Thiết kế nội thất'),
 (29, 'Mẫu thiết kế');
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `tbl_order`
+--
+
+CREATE TABLE `tbl_order` (
+  `ID` int(11) NOT NULL,
+  `productID` int(11) NOT NULL,
+  `userName` varchar(255) NOT NULL,
+  `UserID` int(11) NOT NULL,
+  `quantity` int(11) NOT NULL,
+  `price` varchar(255) NOT NULL,
+  `image` varchar(255) NOT NULL,
+  `address` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Đang đổ dữ liệu cho bảng `tbl_order`
+--
+
+INSERT INTO `tbl_order` (`ID`, `productID`, `userName`, `UserID`, `quantity`, `price`, `image`, `address`) VALUES
+(4, 24, 'Nguyễn Công Thành', 5, 1, '32500000', '66137b3002.jpg', '82/24'),
+(5, 26, 'Nguyễn Công Thành', 5, 1, '20000000', '783ab615c6.jpg', '82/24'),
+(6, 27, 'Nguyễn Công Thành', 5, 5, '39500000', 'ff66f98533.jpg', '82/24'),
+(7, 29, 'Nguyễn Công Thành', 5, 1, '23000000', '956178a9cd.jpg', '82/24'),
+(8, 25, 'Nguyễn Công Thành', 5, 1, '15900000', '5fb32272bd.jpg', '82/24'),
+(9, 24, 'Nguyễn Công Thành', 5, 1, '32500000', '66137b3002.jpg', '82/24'),
+(10, 24, 'Nguyễn Công Thành', 5, 1, '32500000', '66137b3002.jpg', '82/24');
 
 -- --------------------------------------------------------
 
@@ -162,39 +198,6 @@ CREATE TABLE `tbl_user` (
 INSERT INTO `tbl_user` (`ID`, `Name`, `Address`, `Phone`, `Gender`, `Email`, `Password`) VALUES
 (5, 'Nguyễn Công Thành', '82/24', '0767022305', 1, 'congthanh23599@gmail.com', '123456');
 
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `user`
---
-
-CREATE TABLE `user` (
-  `user_id` int(11) NOT NULL,
-  `first_name` varchar(100) NOT NULL,
-  `last_name` varchar(100) NOT NULL,
-  `register_date` datetime DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Đang đổ dữ liệu cho bảng `user`
---
-
-INSERT INTO `user` (`user_id`, `first_name`, `last_name`, `register_date`) VALUES
-(1, 'Daily', 'Tuition', '2020-03-28 13:07:17'),
-(2, 'Akshay', 'Kashyap', '2020-03-28 13:07:17');
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `wishlist`
---
-
-CREATE TABLE `wishlist` (
-  `cart_id` int(11) NOT NULL,
-  `user_id` int(11) NOT NULL,
-  `item_id` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
 --
 -- Chỉ mục cho các bảng đã đổ
 --
@@ -224,6 +227,12 @@ ALTER TABLE `tbl_category`
   ADD PRIMARY KEY (`catID`);
 
 --
+-- Chỉ mục cho bảng `tbl_order`
+--
+ALTER TABLE `tbl_order`
+  ADD PRIMARY KEY (`ID`);
+
+--
 -- Chỉ mục cho bảng `tbl_product`
 --
 ALTER TABLE `tbl_product`
@@ -234,12 +243,6 @@ ALTER TABLE `tbl_product`
 --
 ALTER TABLE `tbl_user`
   ADD PRIMARY KEY (`ID`);
-
---
--- Chỉ mục cho bảng `user`
---
-ALTER TABLE `user`
-  ADD PRIMARY KEY (`user_id`);
 
 --
 -- AUTO_INCREMENT cho các bảng đã đổ
@@ -261,13 +264,19 @@ ALTER TABLE `tbl_brand`
 -- AUTO_INCREMENT cho bảng `tbl_cart`
 --
 ALTER TABLE `tbl_cart`
-  MODIFY `cartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=57;
+  MODIFY `cartID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=70;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_category`
 --
 ALTER TABLE `tbl_category`
   MODIFY `catID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+
+--
+-- AUTO_INCREMENT cho bảng `tbl_order`
+--
+ALTER TABLE `tbl_order`
+  MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT cho bảng `tbl_product`
@@ -280,12 +289,6 @@ ALTER TABLE `tbl_product`
 --
 ALTER TABLE `tbl_user`
   MODIFY `ID` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
---
--- AUTO_INCREMENT cho bảng `user`
---
-ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

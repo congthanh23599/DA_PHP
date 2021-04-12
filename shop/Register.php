@@ -18,7 +18,7 @@
 	$ct = new cart();
 	$us = new user();
 	$cat = new category();
-    $cs = new customer();
+    $cs = new user();
 	$product = new product();
 ?>
 
@@ -27,7 +27,7 @@
        
         if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit'])) {
             
-            $insertCustomer = $cs->insert_Customer($_POST) ;
+            $insertuser = $cs->insert_user($_POST) ;
             
         }
 ?>
@@ -51,9 +51,9 @@
 	<a href="login.php" class="float-right btn btn-outline-primary mt-1">Đăng nhập</a>
 	<h4 class="card-title mt-2">Đăng ký</h4>
     <?php 
-        if (isset($insertCustomer)) 
+        if (isset($insertuser)) 
         {
-			echo $insertCustomer;
+			echo $insertuser;
 		}
     ?>
 </header>
