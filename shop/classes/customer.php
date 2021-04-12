@@ -72,7 +72,7 @@
                     Session::set('user_login', true);
                     Session::set('user_ID', $value['ID']);
                     Session::set('user_Name',  $value['Name']);
-                
+                    Session::set('Address',  $value['Address']);
                     header('Location:index.php');
                     //session_destroy();
                 } 
@@ -159,5 +159,35 @@
             $result = $this->db->select($query);
             return $result;
         }
+        public function show_customers($id){
+			$query = "SELECT * FROM tbl_user WHERE ID='$id'";
+			$result = $this->db->select($query);
+			return $result;
+		}
+        // cập nhật thông tin cá nhân của user
+        public function update_customers($data, $id){
+			$name = mysqli_real_escape_string($this->db->link, $data['Name']);
+			$gender = mysqli_real_escape_string($this->db->link, $data['Gender']);
+			$email = mysqli_real_escape_string($this->db->link, $data['Email']);
+			$address = mysqli_real_escape_string($this->db->link, $data['Address']);
+			$phone = mysqli_real_escape_string($this->db->link, $data['Phone']);
+			
+			if($name=="" || $gender=="" || $email=="" || $address=="" || $phone ==""){
+				$alert = "<span class='error'>Fields must be not empty</span>";
+				return $alert;
+			}else{
+				$query = "UPDATE tbl_user SET Name='$name',Gender='$gender',Email='$email',Address='$address',Phone='$phone' WHERE ID ='$id'";
+				$result = $this->db->insert($query);
+				if($result){
+						$alert = "<span class='success'>Cập nhập thành công </span>";
+						return $alert;
+				}else{
+						$alert = "<span class='error'>cập nhập thất bại</span>";
+						return $alert;
+				}
+				
+			}
+		}
+		
     }
 ?>

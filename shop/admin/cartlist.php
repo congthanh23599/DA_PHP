@@ -10,15 +10,15 @@
 	if (isset($_GET['delid'])) 
 		{
 			$id = $_GET['delid'];
-			$delcart = $ct->del_admin_cart($id) ;
+			$delorder = $ct->del_admin_order($id) ;
 		}
 ?>
 <div class="grid_10">
     <div class="box round first grid">
         <h2>Danh sách sản phẩm</h2>
         <?php 
-			if (isset($delcart)) {
-				echo $delcart;
+			if (isset($delorder)) {
+				echo $delorder;
 			}
 		?>
         <div class="block">  
@@ -27,18 +27,19 @@
 				<tr>
 					<th>STT</th>
 					<th>ID sản phẩm</th>
-					<th>Tên sản phẩm</th>
-					<th>Giá sản phẩm</th>
-					<th>Số lượng</th>
-					<th>Hình ảnh sản phẩm</th>
 					<th>ID user</th>
+					<th>tên User</th>
+					<th>Số lượng</th>
+					<th>Giá sản phẩm</th>
+					<th>Hình ảnh sản phẩm</th>
+					<th>Địa chỉ </th>
 					<th>Action</th>
 				</tr>
 			</thead>
 			<tbody>
 				<?php  	
 				 		
-						$cartlist = $ct->show_product_cart();
+						$cartlist = $ct->show_order();
 						if ($cartlist) 
 						{	$i=0;
 							while ($result = $cartlist->fetch_assoc()) 
@@ -50,17 +51,14 @@
 				<tr class="odd gradeX">
 					<td><?php echo $i?></td>
 					<td><?php echo $result['productID']?></td>
-                    <td><?php echo $result['productName']?></td>
-					<td><?php echo $result['price']?></td>
+                    <td><?php echo $result['userName']?></td>
+					<td><?php echo $result['UserID']?></td>
                     <td><?php echo $result['quantity']?></td>
+					<td><?php echo $result['price']?></td>
 					<td><img src="uploads/<?php echo $result['image']?>" alt="Image" width="80"></td>
 					
-					<td><?php echo $result['UserID']?></td>
-					<!-- giới hạn ký tự product_desc 50kys tự -->
-					<!-- <td><?php echo $fm->textShorten($result['product_desc'], 20) ;?></td> -->
-					
-					
-					<td><a href="productedit.php?productID=<?php echo $result['productID']?>">Sửa</a> ||<a onclick="return confirm('Bạn có muốn xóa không?')" href="?delid=<?php echo $result['cartID']?>">Xóa</a> </td>
+					<td><?php echo $result['address']?></td>
+					<td><a onclick="return confirm('Bạn có muốn xóa không?')" href="?delid=<?php echo $result['ID']?>">Xóa</a> </td>
 				</tr>
 				<?php 
 					}

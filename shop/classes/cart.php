@@ -21,7 +21,7 @@
             $quantity = $this->fm->validation($quantity);// kiểm tra số lượng 
             $quantity = mysqli_real_escape_string($this->db->link, $quantity);// kiểm tra số lượng ng dùng nhập
             $ID = mysqli_real_escape_string($this->db->link, $id);
-            $sID = session_id();
+            // $sID = session_id();
             $query = "SELECT * FROM tbl_product WHERE productID = '$id'"; 
             $result = $this->db->select($query)->fetch_assoc();
             // echo '<pre>';
@@ -39,8 +39,8 @@
             }
             else
             {
-                $query_insert = "INSERT INTO tbl_cart(productID, sID, productName, price, quantity, image, UserID) 
-                VALUES('$ID', '$sID', '$productName', '$price', '$quantity', '$image', ' $UserID')";
+                $query_insert = "INSERT INTO tbl_cart(productID, productName, price, quantity, image, UserID) 
+                VALUES('$ID', '$productName', '$price', '$quantity', '$image', ' $UserID')";
     
                 $insert_cart = $this->db->insert($query_insert);
                 if ($insert_cart) {
@@ -144,6 +144,54 @@
             $query = "DELETE  FROM tbl_cart Where UserID ='$userID'";
             $result = $this->db->insert($query);
             return $result;// trả về kết quả }
+        }
+        public function insertOrder($userID)
+        {
+			// $sId = session_id();
+            $userName = Session::get('user_Name');
+            $Address = Session::get('Address');
+			$query = "SELECT * FROM tbl_cart WHERE UserID = '$userID'";
+			$get_product = $this->db->select($query);
+			if($get_product){
+				while($result = $get_product->fetch_assoc()){
+					$productid = $result['productID'];
+					
+					$quantity = $result['quantity'];
+					$price = $result['price'] * $quantity;
+					$image = $result['image'];
+					$userID = $userID;
+					$query_order = "INSERT INTO tbl_order(productId,userName,UserID, quantity,price,image, address)
+                     VALUES('$productid', '$userName', '$userID', '$quantity', '$price', '$image','$Address')";
+					$insert_order = $this->db->insert($query_order);
+				}
+                header("Location:index.php");
+			}
+
+
+		}
+        // table order
+        public function del_admin_order($delid)
+        { 
+            $ID = mysqli_real_escape_string($this->db->link, $delid);
+            $query = "DELETE FROM tbl_order WHERE ID ='$ID' "; 
+            $result = $this->db->delete($query);
+            if ($result) 
+            {  
+                $alert = "<span class='success'> Xóa đơn hàng thành công</span>";
+                return $alert;
+                header('Location:cartlist.php');
+            } 
+            else 
+            {
+                $alert = "<span class='error'> Không xóa được đơn hàng</span>";
+                return $alert;
+            }
+        }
+        public function show_order()
+        { 
+            $query = "SELECT * FROM tbl_order order by productID desc"; // desc lay theo id giam dan
+            $result = $this->db->select($query);
+            return $result;
         }
     }
 ?>

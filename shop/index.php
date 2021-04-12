@@ -2,13 +2,14 @@
 include'./inc/header.php';
 include'./inc/slider.php';
 ?>
-<?php 
+<!-- <?php 
 	$login_check = Session::get('user_login');
 	if ($login_check == false) {
 		header('Location:login.php');
 	} 
 				
-?>
+?> -->
+
 <div class="main">
 
     <div class="content">

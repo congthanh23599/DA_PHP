@@ -1,5 +1,5 @@
 </div>
-<div class="footer text-center container" >
+<div class="footer text-center container-fluid " >
     <div class="wrapper">
         <div class="section group">
             <div class="col_1_of_4 span_1_of_4">

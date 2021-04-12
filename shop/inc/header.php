@@ -82,7 +82,6 @@
 										{
 											echo "Rỗng";
 										}
-										
 									?>
 								</span>
 							</a>
@@ -93,13 +92,8 @@
 			
 				if (isset($_GET['userID'])) 
 				{	
-					//$delcart = $ct->del_all_cart();
-					// unset($_SESSION['user_ID']);
-					// header("Location:login.php");
 					Session::destroy();
-					
 				}
-				
 			?>
 			<?php 
 				$login_check = Session::get('user_login');

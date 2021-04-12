@@ -40,7 +40,7 @@
 							echo $delcart;
 						}
 					?>
-						<table class="table table-striped table-hover table-bordered border-primary">
+						<table class="table table-hover table-bordered border-primary">
 							<tr>
 								<th width="20%">Sản phẩm</th>
 								<th width="10%">Image</th>
@@ -83,13 +83,8 @@
 							
 							
 						</table>
-						<?php 
-							$check_cart = $ct->check_cart();
-								if ($check_cart) 
-								{
-											
-						?>
-						<table class="table-active table-bordered border-primary" style="float:right;text-align:left;" width="40%">
+					
+						<table class=" table-bordered border-primary" style="float:right;text-align:left;" width="40%">
 							<tr>
 								<th>Tổng giá : </th>
 								<td><?php 
@@ -97,7 +92,8 @@
 									echo $tonggia." "."VND";
 									// Session::set('sum', $tonggia);
 									Session::set('SL', $SL);
-								 ?></td>
+								 ?>
+								 </td>
 							</tr>
 							<!-- <tr>
 								<th>VAT : </th>
@@ -107,16 +103,15 @@
 								<th>Giá tổng:</th>
 								<td>TK. 241500 </td>
 							</tr> -->
+							<tr>
+							<td></td>
+							<th></th>
+							<td><a class="btn btn-outline-danger" href="offlinepay.php" role="button">Mua hàng</a></td>	
+							</tr>
 					   </table>
-					   <?php 			
-					   			
-								}
-								else
-								{
-									echo 'Giỏ hàng trống';
-								}
-						?>
+				
 						<br><br><br>
+					
 					</div>
 					<!-- <div class="shopping">
 						<div class="shopleft">
